@@ -1,2 +1,2 @@
 # Exercise generator
- Un générateur de collecteur de réponse pour le LMS brio
+ Un générateur de collecteurs de réponses pour le LMS Brio.
