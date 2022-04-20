@@ -86,11 +86,11 @@ fileInput.addEventListener('change', function (e) {
 
 async function CreateFolderName() {
 
-   // Disable the generate button on loading
-   generateBtn.setAttribute('disabled', true);
-
    // Get a count of all textfield (to define the number of exercise)
    totalEx = await TextFieldsCount(pdfURL);
+
+   // Disable the generate button on loading
+   generateBtn.setAttribute('disabled', true);
 
    suffix = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(1) > input").value;
    uniqueID = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(2) > input").value;
