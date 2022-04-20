@@ -86,6 +86,7 @@ fileInput.addEventListener('change', function (e) {
 
 async function CreateFolderName() {
 
+    // We must put this first to show the modal...
    // Get a count of all textfield (to define the number of exercise)
    totalEx = await TextFieldsCount(pdfURL);
 
