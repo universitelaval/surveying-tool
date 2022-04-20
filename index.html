@@ -7,13 +7,10 @@
     <title>Exercises generator</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Bebas+Neue&amp;display=swap">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/Contact-Form-Clean.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/css/pikaday.min.css">
-
-    <!-- ✅ -->
+<!-- ✅ -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -43,7 +40,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
     <!-- ✅ -->
 
-
 <style>
 
     .form-control::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
@@ -55,17 +51,17 @@
 </head>
 
 <body style="background: rgb(241,247,251);">
-    <nav class="navbar navbar-light navbar-expand-lg sticky-top d-grid portfolio-navbar gradient" style="background: #ffffff;height: 91.375px;padding-left: 23px;">
-        <div class="container"><img src="assets/img/ulaval_logo.png" style="width: 123px;margin-right: 36px;"><a class="navbar-brand d-grid d-print-grid d-sm-grid d-md-grid d-lg-grid d-xl-grid d-xxl-grid logo" href="#" style="font-weight: bold;font-family: Overpass, sans-serif;font-size: 20px;">Collecteur de réponses</a></div>
+    <nav class="navbar navbar-light navbar-expand-lg sticky-top d-grid flex-nowrap portfolio-navbar gradient" style="background: #ffffff;height: 91.375px;padding-left: 23px;">
+        <div class="container"><img class="d-table-row" src="assets/img/ulaval_logo.png" style="width: 123px;margin-right: 36px;"><a class="navbar-brand d-print-grid d-sm-grid d-md-grid d-lg-grid d-xl-grid d-xxl-grid logo" href="#" style="font-weight: bold;font-family: Overpass, sans-serif;font-size: calc(8px + 1.5vw);">Collecteur de réponses</a><span class="badge bg-dark" style="margin-left: -6px;margin-bottom: 2px;">V1</span></div>
     </nav>
-    <main class="page lanidng-page">
+    <main class="page landing-page">
         <section class="portfolio-block photography">
             <section class="contact-clean" style="padding-right: 30px;padding-left: 30px;padding-top: 30px;max-width: none;padding-bottom: 26px;">
-                <form class="form-control" method="post" style="width: 100%;max-width: 1300px;margin-left: auto;margin-right: auto;padding-bottom: 47px;">
+                <form class="form-control" method="post" style="width: 100%;max-width: 1300px;margin-left: auto;margin-right: auto;padding-bottom: 47px;min-width: 340px;">
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" title="Il s'agit du code unique du cours (utilisé sur Brio)." required="" maxlength="10" pattern="^[^ ].+[^ ]$"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" placeholder="Ex.: exercice" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
                         </div>
                     </div>
@@ -73,25 +69,57 @@
                         <div class="row">
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" placeholder="Ex.: bilan" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">5) Limite de caractères</label><input class="form-control" type="number" max="1000" min="100" placeholder="1000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">6) Langue</label><select class="form-select" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 42px;">
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">6) Langue</label><select class="form-select" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 36px;">
                                     <optgroup label="Choix de langue">
                                         <option value="12" selected="">Français</option>
-                                        <option value="13" disabled>Anglais</option>
+                                        <option value="13">Anglais</option>
                                     </optgroup>
                                 </select></div>
                         </div>
                     </div>
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="width: 100%;padding-bottom: 10;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Importez votre PDF interactif...</label><input class="form-control" type="file" style="padding-top: 8px;font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
+                            <div class="col-md-4" style="width: 100%;padding-bottom: 10;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Importez votre PDF interactif...</label><input class="form-control" type="file" style="padding-top: 6px;font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
                         </div>
-                    </div><button class="btn btn-primary" type="button" style="border-radius: 7px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;padding-bottom: 13px;margin-left: 12px;--bs-body-font-weight: normal;" onclick="CreateFolderName();" data-toggle="modal" data-target="#exampleModalCenter" disabled>Générer mes activités</button>
+                    </div><button class="btn btn-secondary disabled" type="button" style="border-radius: 5px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;--bs-body-font-weight: normal;border-style: none;padding-top: 9px;margin-left: 12px;margin-top: 12px;" onclick="CreateFolderName()" data-toggle="modal" data-target="#exampleModalCenter" disabled="">Générer mes activités</button>
                 </form>
             </section>
         </section>
-    </main>
-
-         <!-- ✅ -->
+        <section class="portfolio-block skills" style="padding-top: 37px;padding-left: 0px;"><img src="assets/img/explainer.png" style="width: 100%;padding-left: 31px;">
+            <div class="container">
+                <div class="heading"></div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline" style="margin-top: 18px;"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-family: Overpass, sans-serif;">Zéro code...</h3>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Vous n'avez pas à savoir comment bidouiller en javascript pour utiliser notre générateur et créer vos propres collecteurs de réponses selon vos requis (ou pour en corriger des existants...)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline" style="margin-top: 18px;"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-family: Overpass, sans-serif;">Optimisé pour Brio</h3>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Nos collecteurs de réponses ont été optimisés notre LMS préféré. Ils s'afficheront donc de façon uniforme dans les principaux navigateurs et sur différents apprareils (mobile, tablette, desktop...)</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="card special-skill-item border-0">
+                            <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline" style="margin-top: 18px;"></i></div>
+                            <div class="card-body">
+                                <h3 class="card-title" style="font-family: Overpass, sans-serif;">Orienté PDF</h3>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Notre outil se base sur l'interprétation de l'ordre de lecture de vos fichiers PDF pour générer tous les fichiers requis selon le nombre de champs interactifs que votre document contient.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>         <!-- ✅ -->
         <!-- Button trigger modal -->
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static">
@@ -103,12 +131,12 @@
                  <!--  <span aria-hidden="true">&times;</span> -->
                 <!-- </button> -->
               </div>
-              <div class="modal-body">
-                Cela peut prendre quelques minutes, vous avec le temps d'aller chercher un bon café! ☕️😉
+              <div class="modal-body" style="padding: 30px;margin-left: 10px;">
+                Cela peut prendre quelques minutes... Vous avec le temps d'aller chercher un bon café! ☕️😉
               </div>
               <div class="modal-footer justify-content-between">
 
-                    <button class="btn btn-primary" type="button" style="border-radius: 7px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif; margin-left: 12px;--bs-body-font-weight: normal;" disabled>
+                    <button class="btn btn-primary" type="button" style="border-radius: 5px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;--bs-body-font-weight: normal;border-style: none;padding-top: 9px;margin-left: 12px;margin-top: 12px;margin-bottom: 12px;" disabled>
                     <span class="spinner-border spinner-border-sm"></span>
                         &nbsp;Loading...
                     </button>
@@ -117,14 +145,9 @@
           </div>
         </div>
         <!-- ✅ -->
-
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pikaday/1.6.1/pikaday.min.js"></script>
     <script src="assets/js/theme.js"></script>
-
-    <!-- ✅ -->
     <script src="assets/js/library.js"></script>
-    <!-- ✅ -->
 </body>
 
 </html>
