@@ -122,7 +122,7 @@ async function CreateFolderName() {
     }
 
     if (charLimit == 0) {
-        charLimit = 100;
+        charLimit = 1000;
     }
 
    var iterator = parseInt(totalEx);
