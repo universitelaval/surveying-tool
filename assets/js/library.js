@@ -316,10 +316,11 @@ function AddFilesToTemplate(mypdf, myzip, subFolderName) {
             // Define the js taxonomy here...
             var taxonomyContent = `
              // See where this is executed...
+             console.log('*-----------------------*');
              console.log('✅ External <taxonomy.js> have run...');
 
              var myWords = {
-                 'document_title' : 'Bilan réflexif',
+                 'document_title' : 'Document',
                  'exercise_name' : '${exName}',
                  'file_name' : '${docName}',
                  'file_size' : '${docSize}',
