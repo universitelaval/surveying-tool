@@ -156,9 +156,9 @@ async function CreateFolderName() {
 }
 
 function AssembleModalList(myFiles) {
-    var listStr = 'Cela peut prendre quelques minutes, vous avec le temps \nd\'aller chercher un bon café! ☕️😉<br><br>📁 Package.zip:<br>';
+    var listStr = 'Cela peut prendre quelques minutes... Vous avec le temps \nd\'aller chercher un bon café! ☕️😉<br><br>📁 Package.zip:<br>';
     for (var i = 0; i < myFiles.length; i++) {
-        listStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;☑️ ' + myFiles[i] + '<br>';
+        listStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' + (i+1) + ' - ' + myFiles[i] + '.zip<br>';
     }
     return listStr;
 }
@@ -287,7 +287,7 @@ function SaveToMain() {
 async function SetSubFolderName(mypdf, myzip) {
 
     for (var i = 0; i < activityArr.length; i++) {
-        var sfn = activityArr[i] + ' - Storyline output.zip';
+        var sfn = activityArr[i] + ' - Storyline output';
 
         await AddFilesToTemplate(mypdf, myzip, sfn);
 
