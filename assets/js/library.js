@@ -50,7 +50,7 @@ var fileInput = document.querySelector("body > main > section > section > form >
 
 // Disable the generate button on loading
 // generateBtn.setAttribute('disabled', true);
-//generateBtn.setAttribute('className', 'btn btn-secondary btn-lg');
+// generateBtn.setAttribute('className', 'btn btn-secondary btn-lg');
 
 fileInput.addEventListener('change', function (e) {
 
@@ -86,21 +86,15 @@ fileInput.addEventListener('change', function (e) {
 
 async function CreateFolderName() {
 
-   // Get a count of all textfield (to define the number of exercise)
-   totalEx = await TextFieldsCount(pdfURL);
-
-   // Show loading button...
-   //document.querySelector("#button-1649359296316").innerHTML = '<span class="spinner-border spinner-border-sm"></span> Loading...';
-
    // Disable the generate button on loading
    generateBtn.setAttribute('disabled', true);
 
-   // totalEx = 3;
+   // Get a count of all textfield (to define the number of exercise)
+   totalEx = await TextFieldsCount(pdfURL);
+
    suffix = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(1) > input").value;
    uniqueID = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(2) > input").value;
-
    exName = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(3) > input").value;
-
    docName = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(1) > input").value;
    charLimit = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(2) > input").value;
    language = GetSelectedLanguage();
@@ -166,15 +160,14 @@ function AssembleModalList(myFiles) {
 function GetSelectedLanguage() {
 
     var selectedLang;
+    var dropDown = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(3) > select");
 
-   var dropDown = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(3) > select");
-
-   if (dropDown.value == '12') {
+    if (dropDown.value == '12') {
         selectedLang = 'french';
-   } else {
+    } else {
         selectedLang = 'english';
-   }
-   return selectedLang;
+    }
+    return selectedLang;
 }
 
 

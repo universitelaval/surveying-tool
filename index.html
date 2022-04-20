@@ -9,8 +9,7 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
-
-    <!-- ✅ -->
+<!-- ✅ -->
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -51,8 +50,8 @@
 </head>
 
 <body style="background: rgb(241,247,251);">
-    <nav class="navbar navbar-light navbar-expand-lg sticky-top d-grid flex-nowrap portfolio-navbar gradient" style="background: #ffffff;height: 91.375px;padding-left: 23px; min-width: 398px;">
-        <div class="container"><img class="d-table-row" src="assets/img/ulaval_logo.png" style="width: 123px;margin-right: 36px;"><a class="navbar-brand d-print-grid d-sm-grid d-md-grid d-lg-grid d-xl-grid d-xxl-grid logo" href="#" style="font-weight: bold;font-family: Overpass, sans-serif;font-size: calc(8px + 1.5vw);">Collecteur de réponses</a><span class="badge bg-dark" style="margin-left: -6px;margin-bottom: 2px;">V1</span></div>
+    <nav class="navbar navbar-light navbar-expand-lg sticky-top d-grid flex-nowrap portfolio-navbar gradient" style="background: #ffffff;height: 91.375px;padding-left: 23px;min-width: 398px;">
+        <div class="container"><img class="d-table-row" src="assets/img/ulaval_logo.png" style="width: 123px;margin-right: 29px;"><a class="navbar-brand d-print-grid d-sm-grid d-md-grid d-lg-grid d-xl-grid d-xxl-grid logo" href="#" style="font-weight: bold;font-family: Overpass, sans-serif;font-size: calc(8px + 1.5vw);">Collecteur de réponses</a><span class="badge bg-dark" style="margin-left: -6px;margin-bottom: 2px;">V1</span></div>
     </nav>
     <main class="page landing-page">
         <section class="portfolio-block photography">
@@ -60,16 +59,16 @@
                 <form class="form-control" method="post" style="width: 100%;max-width: 1300px;margin-left: auto;margin-right: auto;padding-bottom: 47px;min-width: 340px;">
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" title="Il s'agit du code unique du cours (utilisé sur Brio)." required="" maxlength="10" pattern="^[^ ].+[^ ]$"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" placeholder="Ex.: exercice" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion" oninput="this.value.replace(/\s/g, &#39;&#39;);" required="" title="Un identifiant pour faciliter la gestion de vos fichiers et leur archivage. Vous pouvez entrer une valeur qui représente bien votre projet (ex.: normalisation)."></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" title="Ce code est requis. Vous pouvez utiliser le code unique du cours provenant de Brio." required="" maxlength="10" oninput="this.value = this.value.toUpperCase();"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: exercice" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="L'appellation de vos activités (ex.: excercice de réflexion)."></div>
                         </div>
                     </div>
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" placeholder="Ex.: bilan" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">5) Limite de caractères</label><input class="form-control" type="number" max="1000" min="100" placeholder="1000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">6) Langue</label><select class="form-select" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 36px;">
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: bilan" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="Le nom de votre fichier PDF."></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">5) Limite de caractères</label><input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" max="1000" min="100" placeholder="1000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="La limite de caractères permise pour chacune des activités."></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">6) Langue</label><select class="form-select" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 36px;" required="" title="Langue de l'interface.">
                                     <optgroup label="Choix de langue">
                                         <option value="12" selected="">Français</option>
                                         <option value="13">Anglais</option>
@@ -79,7 +78,7 @@
                     </div>
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="width: 100%;padding-bottom: 10;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Importez votre PDF interactif...</label><input class="form-control" type="file" style="padding-top: 6px;font-family: Overpass, sans-serif;padding-bottom: 4px;" accept=".pdf"></div>
+                            <div class="col-md-4" style="width: 100%;padding-bottom: 10;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Importez votre PDF interactif...</label><input class="form-control" type="file" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-top: 6px;font-family: Overpass, sans-serif;padding-bottom: 4px;" accept=".pdf" required="" title="Sélectionnez un PDF contenant au moins 1 champs de texte éditable."></div>
                         </div>
                     </div><button class="btn btn-secondary disabled" type="button" style="border-radius: 5px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;--bs-body-font-weight: normal;border-style: none;padding-top: 9px;margin-left: 12px;margin-top: 12px;" onclick="CreateFolderName()" data-toggle="modal" data-target="#exampleModalCenter" disabled="">Générer mes activités</button>
                 </form>
@@ -94,7 +93,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-star-outline" style="margin-top: 18px;"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title" style="font-family: Overpass, sans-serif;">Zéro code...</h3>
-                                <p class="card-text" style="font-family: Overpass, sans-serif;">Vous n'avez pas à savoir comment bidouiller en javascript pour utiliser notre générateur et créer vos propres collecteurs de réponses selon vos requis (ou pour en corriger des existants...)</p>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Vous n'avez pas à savoir comment bidouiller en Javascript pour utiliser notre générateur et créer vos propres collecteurs de réponses selon vos requis (ou pour en corriger des existants...).</p>
                             </div>
                         </div>
                     </div>
@@ -103,7 +102,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-lightbulb-outline" style="margin-top: 18px;"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title" style="font-family: Overpass, sans-serif;">Optimisé pour Brio</h3>
-                                <p class="card-text" style="font-family: Overpass, sans-serif;">Nos collecteurs de réponses ont été optimisés pour notre LMS préféré. Ils s'afficheront donc de façon uniforme dans les principaux navigateurs et sur différents appareils (mobile, tablette, desktop...)</p>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Nos collecteurs de réponses ont été optimisés pour notre LMS préféré. Ils s'afficheront donc de façon uniforme dans les principaux navigateurs et sur différents appareils (mobile, tablette, desktop...).</p>
                             </div>
                         </div>
                     </div>
@@ -112,7 +111,7 @@
                             <div class="card-header bg-transparent border-0"><i class="icon ion-ios-gear-outline" style="margin-top: 18px;"></i></div>
                             <div class="card-body">
                                 <h3 class="card-title" style="font-family: Overpass, sans-serif;">Orienté PDF</h3>
-                                <p class="card-text" style="font-family: Overpass, sans-serif;">Notre outil se base sur l'interprétation de l'ordre de lecture de vos PDF pour générer tous les fichiers requis selon le nombre de champs interactifs que votre document contient.</p>
+                                <p class="card-text" style="font-family: Overpass, sans-serif;">Notre outil se base sur l'interprétation de l'ordre de lecture de vos productions PDF pour générer tous les fichiers requis, selon le nombre de champs interactifs que votre document contient.</p>
                             </div>
                         </div>
                     </div>
@@ -146,6 +145,7 @@
         </div>
         <!-- ✅ -->
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/library.js"></script>
 </body>
