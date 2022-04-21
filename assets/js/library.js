@@ -11,7 +11,12 @@ var pdfURL;
 var pdfFileName = 'dc81a165fb79.pdf';
 
 var docCoverURL;
-var docCoverURLBlob;
+// var docCoverURLBlob;
+
+var docCoverURLBlob = {
+    blob: "empty"
+};
+
 var docCoverName = 'cover.png'
 
 var zipTemplateFR = "template/myzip-FR.zip";
@@ -342,7 +347,7 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
             destination_b.file("taxonomy.js", taxonomyContent);
 
             // Add the image blob here...
-            docCoverDestination.file(docCoverName, docCoverURLBlob);
+            docCoverDestination.file(docCoverName, docCoverURLBlob.blob);
 
             // Push the activity to the main Zip
             jsZip.generateAsync({type:"blob"}).then(async function(content) {
@@ -518,7 +523,9 @@ function CreateNewFileFromUrl(msg, url, nextActionType, actionObj) {
       }
       // B) Defining a variable
       else if (nextActionType == 'define') {
-        actionObj = xhr.response;
+        actionObj.blob = xhr.response;
+        console.log(actionObj);
+        console.log("Object: ", docCoverURLBlob.blob);
       }
 
     };
