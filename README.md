@@ -1,4 +1,4 @@
-# Exercise generator
+# Collecteur de réponses
  Un générateur de "collecteurs de réponses" pour le LMS Brio.
- 
- https://universitelaval.github.io/Exercise-generator/
+
+https://universitelaval.github.io/surveying-tool/
