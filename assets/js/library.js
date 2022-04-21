@@ -26,7 +26,9 @@ var docSize;
 var charLimit;
 var language = "french";
 
-var rootFolderName = uniqueID + "_Package";
+var splitChar = "_";
+
+var rootFolderName = splitChar + "Package";
 var activitieDirName;
 var activityArr = [];
 
@@ -94,13 +96,13 @@ async function CreateFolderName() {
    // Disable the generate button on loading
    generateBtn.setAttribute('disabled', true);
 
+   // Define the activity info from the form inputs values
    suffix = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(1) > input").value;
    uniqueID = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(2) > input").value;
    exName = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(3) > input").value;
    docName = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(1) > input").value;
    charLimit = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(2) > input").value;
    language = GetSelectedLanguage();
-
 
     // Get a default answer if nothing is entered
     if (suffix.length == 0) {
@@ -145,13 +147,14 @@ async function CreateFolderName() {
     // Create the list, to display in the modal (for validation feedback)
     document.querySelector("#exampleModalCenter > div > div > div.modal-body").innerHTML = AssembleModalList(activityArr);
 
-    // Download the files
-    DownloadFiles();
+    // Read the PDF files...
+    // DownloadFiles();
+    CreateNewFileFromUrl("Retrieving the PDF file...", pdfURL, "function", ReadZipTemplate);
 }
 
 // ****************************************
 
-// Helper function
+// Helper functions
 
 // 1) Format file size
 function returnFileSize(number) {
@@ -223,19 +226,24 @@ function DownloadFiles() {
         var a = document.createElement('a'); // create html element anchor
         a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
         // Retrieve the zip template...
-        ReadTemplate(xhr.response);
+        ReadZipTemplate(xhr.response);
       };
       xhr.open('GET', pdfURL);
       xhr.send();
 }
 
+// ****************************************
 
-function ReadTemplate(pdffile) {
-    // Get the .zip template according to the selected language
+function ReadZipTemplate(pdffile) {
+
+    // Get the .zip template, according to the selected language...
+    // French:
     if (language == 'french') {
-      selectedLanguageFilePath = zipTemplateFR;
+        selectedLanguageFilePath = zipTemplateFR;
+
+    // English:
     } else {
-      selectedLanguageFilePath = zipTemplateEN;
+        selectedLanguageFilePath = zipTemplateEN;
     }
 
     var request = new XMLHttpRequest();
@@ -246,25 +254,29 @@ function ReadTemplate(pdffile) {
         reader.readAsDataURL(request.response);
         reader.onload = async function(e){
 
+            // Assemblage of the package.zip...
+                // 1) SetSubFolderName
+                // 2) AddFilesToZipTemplate
+                // 3) AddToMainZip
+
             // Set the subfolders names
             await SetSubFolderName(pdffile, request.response);
 
-            // Save the files to the main zip
-            SaveToMain();
-
+            // Generate the download of the main package.zip
+            DownloadMyZipPackage();
         };
     };
     request.send();
-
 }
 
-function SaveToMain() {
+function DownloadMyZipPackage() {
 
     // Save the main container
     mainZip.generateAsync({type:"blob"})
     .then(function(content) {
 
-        saveAs(content, rootFolderName + ".zip");
+        // Use filesaver.js to trigger the download of the package.zip
+        saveAs(content, uniqueID + rootFolderName + ".zip");
 
         // Move to end point and reset the mainZip
         setTimeout(MoveToEndpoint, 2000);
@@ -278,12 +290,19 @@ async function SetSubFolderName(mypdf, myzip) {
 
     for (var i = 0; i < activityArr.length; i++) {
         var sfn = activityArr[i] + ' - Storyline output';
-        await AddFilesToTemplate(mypdf, myzip, sfn);
+        // Process the content of this subfolder,
+        // before going forward with the loop...
+            // 1) Add the PDF
+            // 2) Pass the .zip template as reference
+            // 3) Pass the generated subfolder name
+        await AddFilesToZipTemplate(mypdf, myzip, sfn);
         }
+    // ...
+    // Execution go back to: [ReadZipTemplate]
 }
 
 // Promised return function
-function AddFilesToTemplate(mypdf, myzip, subFolderName) {
+function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
 
     return new Promise(function(resolve, reject) {
 
@@ -291,7 +310,8 @@ function AddFilesToTemplate(mypdf, myzip, subFolderName) {
 
         var jsZip = new JSZip();
 
-        // Here we load the .zip used as a template, and read it
+        // Here we load the .zip used as a template, and read it...
+        // creating the root folder with the subFolderName (loadAsync)....
         jsZip.folder(subFolderName).loadAsync(myzip, {createFolders: true}).then(function (zip) {
 
             // We define the path where to put the uploaded PDF file...
@@ -326,28 +346,37 @@ function AddFilesToTemplate(mypdf, myzip, subFolderName) {
 
             // Push the activity to the main Zip
             jsZip.generateAsync({type:"blob"}).then(async function(content) {
-                // see FileSaver.js
-                // saveAs(content, rootFolderName + ".zip");
-                // saveAs(content, "myCourse_XX98_1_4 - Storyline output" + ".zip");
-                await AddToMain(subFolderName, content);
+
+                // Send the subfolder name/content to the main .zip package
+                await AddToMainZip(subFolderName, content);
+
+                // Resolve the promise...
                 resolve();
+                // ...
+                // Execution go back to: [SetSubFolderName]
             });
         });
-        // Resolve the promise...
-        // ****************************************
-
     });
+    // (End of promised code block)
+    // ****************************************
 }
 
-function AddToMain(subfolder, ctn) {
+// ****************************************
+
+// zip the content of the received subfolder
+// and add it to the main .zip...
+function AddToMainZip(subfolder, ctn) {
 
     return new Promise(function(resolve, reject) {
         mainZip.file(subfolder + ' - Storyline output.zip', ctn);
-        // Resolve the promise
+
+        // Resolve the promise...
         resolve();
+        // Execution go back to: [AddFilesToZipTemplate]
     });
 }
 
+// ****************************************
 
 function MoveToEndpoint() {
 
@@ -359,9 +388,9 @@ function MoveToEndpoint() {
     location.reload()
 }
 
+// ****************************************
 
-
-// PDFLIB
+// Count the text fields with the PDFLIB API
 const { degrees, PDFDocument, PDFPage, PDFRef, rgb, StandardFonts } = PDFLib
 
 async function TextFieldsCount(doc) {
@@ -375,13 +404,11 @@ async function TextFieldsCount(doc) {
    // Get the form containing all the fields
    const form = pdfDoc.getForm();
 
-   // ****************************************
-
    // Retrieve existing text fields and count them
    var count = 0;
    for (var field of form.getFields()) { // Get all acroform fields.
 
-      // Inspect the constructor.name of different field type
+      // Reference: Inspect the constructor.name of different field type
       // DisplayMessage(field.constructor.name);
 
       if (field.constructor.name == "PDFTextField") {
@@ -394,6 +421,7 @@ async function TextFieldsCount(doc) {
    return count;
 }
 
+// ****************************************
 
 // Retrieve the png image for the top
 var pdfjsLib = window['pdfjs-dist/build/pdf'];
@@ -443,7 +471,8 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
               image = document.createElement('img');
               image.src = docCoverURL;
 
-              StartHeavyLifting(docCoverURL);
+              // StartHeavyLifting(docCoverURL);
+              CreateNewFileFromUrl("Retrieving the cover image...", docCoverURL, "define", docCoverURLBlob);
 
              });
            });
@@ -454,3 +483,48 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
      fileReader.readAsArrayBuffer(file);
    }
  }
+
+// ****************************************
+
+// Refactor the XHR requests (april 2022):
+
+// ****************************************
+
+// 1) StartHeavyLifting(docCoverURL);
+// Replaced by:
+// CreateNewFileFromUrl("Retrieving the cover image...", docCoverURL, "define", docCoverURLBlob);
+
+// 2) DownloadFiles()
+// Replaced by:
+// CreateNewFileFromUrl("Download PDF file...", pdfURL, "function", ReadZipTemplate);
+
+function CreateNewFileFromUrl(msg, url, nextActionType, actionObj) {
+
+  // See what is happening
+  DisplayMessage(msg);
+
+  // XMLHttpRequest
+  var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+      var a = document.createElement('a'); // create html element anchor
+      a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
+
+      // Branching...
+      // A) executing a function ...or... B) Defining a global variable):
+      // A) Defining a variable
+      if (nextActionType == 'function') {
+        actionObj(xhr.response);
+      }
+      // B) Defining a variable
+      else if (nextActionType == 'define') {
+        actionObj = xhr.response;
+      }
+
+    };
+
+    xhr.open('GET', url);
+    xhr.send();
+}
+
+// ****************************************
