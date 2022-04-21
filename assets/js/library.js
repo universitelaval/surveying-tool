@@ -512,7 +512,7 @@ function CreateNewFileFromUrl(msg, url, nextActionType, actionObj) {
 
       // Branching...
       // A) executing a function ...or... B) Defining a global variable):
-      // A) Defining a variable
+      // A) Executing a function
       if (nextActionType == 'function') {
         actionObj(xhr.response);
       }
