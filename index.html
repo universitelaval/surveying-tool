@@ -4,18 +4,18 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
-    <title>Collecteur de réponses - V1</title>
+    <title>Collecteur de réponse</title>
     <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato:300,400,700">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Overpass&amp;display=swap">
     <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
     <link rel="stylesheet" href="assets/css/finetuning.css">
-
-    <!-- Optional JavaScript -->
+<!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
 
     <!--  Other libraries -->
     <!--  PROCESSING: -->
@@ -52,20 +52,20 @@
     <nav class="navbar navbar-light navbar-expand-lg sticky-top d-grid flex-nowrap portfolio-navbar gradient" style="background: #ffffff;height: 91.375px;padding-left: 23px;min-width: auto;width: 100%;">
         <div class="container"><img class="d-table-row" id="ulaval-badge" src="assets/img/ulaval_logo.png" style="width: 123px;margin-right: 29px;"><a class="navbar-brand d-print-grid d-sm-grid d-md-grid d-lg-grid d-xl-grid d-xxl-grid logo" id="project-title" href="#" style="font-weight: bold;font-family: Overpass, sans-serif;font-size: calc(8px + 1.5vw);">Collecteur de réponses</a><span class="badge bg-dark" style="margin-left: -6px;margin-bottom: 2px;">V1</span></div>
     </nav>
-    <main class="page">
+    <main class="page landing-page">
         <section class="portfolio-block photography">
             <section class="contact-clean" style="padding-right: 30px;padding-left: 30px;padding-top: 30px;max-width: none;padding-bottom: 26px;">
                 <form class="form-control" method="post" style="width: 100%;max-width: 1300px;margin-left: auto;margin-right: auto;padding-bottom: 58px;min-width: auto;">
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/\s]/g, &quot;&quot;).normalize(&#39;NFD&#39;).replace(/[\u0300-\u036f]/g, &quot;&quot;);" required="" title="Un identifiant pour faciliter la gestion de vos fichiers et leur archivage. Vous pouvez entrer une valeur qui représente bien votre projet (ex.: normalisation)." minlength="3" maxlength="30"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/\s]/g, &quot;&quot;).normalize(&#39;NFD&#39;).replace(/[\u0300-\u036f]/g, &quot;&quot;);" required="" title="Un identifiant pour faciliter la gestion de vos fichiers et leur archivage. Vous pouvez entrer une valeur qui représente bien votre projet (ex.: reflexion)." minlength="3" maxlength="30"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" title="Ce code est requis. Vous pouvez utiliser le code unique du cours provenant de Brio." required="" maxlength="10" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/\s]/g, &quot;&quot;).normalize(&#39;NFD&#39;).replace(/[\u0300-\u036f]/g, &quot;&quot;).toUpperCase();" minlength="3"></div>
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: exercice" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="L'appellation de vos activités (ex.: excercice de réflexion)." maxlength="200"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: Exercice de réflexion" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="L'appellation de vos activités. Un numérateur sera appliqué automatiquement." maxlength="200"></div>
                         </div>
                     </div>
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
                         <div class="row">
-                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: bilan" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="Le nom de votre fichier PDF." maxlength="50" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/]/g, &quot;&quot;);"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: doc" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="Le nom de votre fichier PDF, sans l'extension (ex:. Bilan de réflexion)." maxlength="50" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/]/g, &quot;&quot;);"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">5) Limite de caractères</label><input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" max="1000" min="100" placeholder="1000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="La limite de caractères permise pour chacune des activités."></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">6) Language</label><select class="form-select" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 36px;" required="" title="Langue de l'interface.">
                                     <optgroup label="Choix de langue">
@@ -83,7 +83,7 @@
                 </form>
             </section>
         </section>
-        <section class="portfolio-block" style="padding-top: 37px;padding-left: 0px;"><img class="d-inline-block d-xxl-flex justify-content-xxl-center" src="assets/img/explainer.png" style="width: 100%;max-width: 1300px;margin-right: auto;margin-left: auto;padding-left: 30px;">
+        <section class="portfolio-block skills" style="padding-top: 37px;padding-left: 0px;"><img class="d-inline-block d-xxl-flex justify-content-xxl-center" src="assets/img/explainer.png" style="width: 100%;max-width: 1300px;margin-right: auto;margin-left: auto;padding-left: 30px;">
             <div class="container">
                 <div class="heading"></div>
                 <div class="row">
@@ -118,19 +118,19 @@
             </div>
         </section>
     </main>
-        <!-- Generating modal -->
+        <!-- Generating files modal -->
+        <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true" data-keyboard="false" data-backdrop="static">
           <div class="modal-dialog modal-dialog-centered" role="document">
-            <!-- Modal content -->
             <div class="modal-content">
               <div class="modal-header">
                 <h5 class="modal-title" id="exampleModalLongTitle">Nous préparons vos fichiers...</h5>
                 <!-- <button type="button" class="close" data-dismiss="modal" aria-label="Close"> -->
-                <!--  <span aria-hidden="true">&times;</span> -->
+                 <!--  <span aria-hidden="true">&times;</span> -->
                 <!-- </button> -->
               </div>
               <div class="modal-body" style="padding: 30px;margin-left: 10px;">
-                Cela peut prendre quelques minutes... Vous donc avec le temps d'aller chercher un bon café! ☕️😉
+                Cela peut prendre quelques minutes... Vous avec donc le temps d'aller chercher un bon café! ☕️😉
               </div>
               <div class="modal-footer justify-content-between">
 
