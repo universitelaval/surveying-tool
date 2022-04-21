@@ -11,8 +11,6 @@ var pdfURL;
 var pdfFileName = 'dc81a165fb79.pdf';
 
 var docCoverURL;
-// var docCoverURLBlob;
-
 var docCoverURLBlob = {
     blob: "empty"
 };
