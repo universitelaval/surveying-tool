@@ -184,7 +184,7 @@ function returnFileSize(number) {
 
 // 2) Assemble the file list (for the modal)
 function AssembleModalList(myFiles) {
-    var listStr = 'Cela peut prendre quelques minutes... Vous avec le temps \nd\'aller chercher un bon café! ☕️😉<br><br>📁 Package.zip:<br>';
+    var listStr = `Cela peut prendre quelques minutes... Vous avec le temps \nd\'aller chercher un bon café! ☕️😉<br><br>📁 ${uniqueID + rootFolderName }.zip:<br>`;
     for (var i = 0; i < myFiles.length; i++) {
         listStr += '&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; ' + (i+1) + ' - ' + myFiles[i] + '.zip<br>';
     }
