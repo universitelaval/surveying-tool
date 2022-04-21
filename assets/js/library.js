@@ -37,7 +37,7 @@ var activityArr = [];
 
 // Swith to hide console logging
 // (Debug mode)
-var msgSwitch = true;
+var msgSwitch = false;
 // Display init...
 DisplayMessage('✅ External libraries loaded correctly.');
 
