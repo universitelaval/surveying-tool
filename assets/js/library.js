@@ -46,6 +46,13 @@ DisplayMessage('✅ External libraries loaded correctly.');
 // Main container zip
 var mainZip = new JSZip();
 
+// PDFLIB required imports
+const { degrees, PDFDocument, PDFPage, PDFRef, rgb, StandardFonts } = PDFLib;
+
+// PDF.js required imports
+var pdfjsLib = window['pdfjs-dist/build/pdf'];
+pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
+
 // ****************************************
 
 // Form UI References
@@ -60,6 +67,7 @@ var fileInput = document.querySelector("body > main > section > section > form >
 
 // ****************************************
 
+// Listen for change on the file input...
 fileInput.addEventListener('change', function (e) {
 
     // Getting a hold of the file reference
@@ -92,9 +100,12 @@ fileInput.addEventListener('change', function (e) {
 
 });
 
+// ****************************************
+
+// Create the naming scheme for the subfolder
 async function CreateFolderName() {
 
-    // We must put this first to show the modal...
+    // We must put this first to display the modal...
    // Get a count of all textfield (to define the number of exercise)
    totalEx = await TextFieldsCount(pdfURL);
 
@@ -152,8 +163,7 @@ async function CreateFolderName() {
     // Create the list, to display in the modal (for validation feedback)
     document.querySelector("#exampleModalCenter > div > div > div.modal-body").innerHTML = AssembleModalList(activityArr);
 
-    // Read the PDF files...
-    // DownloadFiles();
+    // Load the imported PDF in memory
     CreateNewFileFromUrl("Retrieving the PDF file...", pdfURL, "function", ReadZipTemplate);
 }
 
@@ -172,7 +182,7 @@ function returnFileSize(number) {
   }
 }
 
-// 2) Assemble the file list
+// 2) Assemble the file list (for the modal)
 function AssembleModalList(myFiles) {
     var listStr = 'Cela peut prendre quelques minutes... Vous avec le temps \nd\'aller chercher un bon café! ☕️😉<br><br>📁 Package.zip:<br>';
     for (var i = 0; i < myFiles.length; i++) {
@@ -181,7 +191,7 @@ function AssembleModalList(myFiles) {
     return listStr;
 }
 
-// 3) Get the selected language
+// 3) Retrieve and define the selected language
 function GetSelectedLanguage() {
     var selectedLang;
     if (dropDown.value == '12') {
@@ -192,8 +202,10 @@ function GetSelectedLanguage() {
     return selectedLang;
 }
 
-// 4) Custom logging
+// 4) Custom logging function
 function DisplayMessage(content) {
+
+    // console.log when true...
     if (msgSwitch == true) {
         console.log(content);
     } else {
@@ -201,44 +213,39 @@ function DisplayMessage(content) {
     }
 }
 
-// ****************************************
+// 5) Parametric XMLHttpRequest
+function CreateNewFileFromUrl(msg, url, nextActionType, actionObj) {
 
-function StartHeavyLifting(url) {
+  // See what is happening
+  DisplayMessage(msg);
 
-    DisplayMessage('Retrieving the blob of PDF cover...');
+  // XMLHttpRequest
+  var xhr = new XMLHttpRequest();
+    xhr.responseType = 'blob';
+    xhr.onload = function () {
+      var a = document.createElement('a'); // create html element anchor
+      a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
 
-    var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function () {
-        var a = document.createElement('a'); // create html element anchor
-        a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-        // Get the blob
-        docCoverURLBlob = xhr.response;
-      };
-      xhr.open('GET', url);
-      xhr.send();
+      // Branching...
+      // A) Executing a function
+      if (nextActionType == 'function') {
+        actionObj(xhr.response);
+      }
+      // B) Defining a variable
+      else if (nextActionType == 'define') {
+        // Need to use an object property
+        // to pass/use it as a reference...
+        actionObj.blob = xhr.response;
+      }
+
+    };
+    xhr.open('GET', url);
+    xhr.send();
 }
 
 // ****************************************
 
-function DownloadFiles() {
-
-    DisplayMessage('Download Files...');
-
-    var xhr = new XMLHttpRequest();
-      xhr.responseType = 'blob';
-      xhr.onload = function () {
-        var a = document.createElement('a'); // create html element anchor
-        a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-        // Retrieve the zip template...
-        ReadZipTemplate(xhr.response);
-      };
-      xhr.open('GET', pdfURL);
-      xhr.send();
-}
-
-// ****************************************
-
+// Read the zip template, when PDF is loaded in memory
 function ReadZipTemplate(pdffile) {
 
     // Get the .zip template, according to the selected language...
@@ -383,9 +390,12 @@ function AddToMainZip(subfolder, ctn) {
 
 // ****************************************
 
+// Reset the main .zip, clear the activity
+// array and reload the page
 function MoveToEndpoint() {
 
     DisplayMessage('Endpoint reached...');
+
     // Reset the main zip...
     mainZip = new JSZip();
     activityArr = [];
@@ -396,8 +406,6 @@ function MoveToEndpoint() {
 // ****************************************
 
 // Count the text fields with the PDFLIB API
-const { degrees, PDFDocument, PDFPage, PDFRef, rgb, StandardFonts } = PDFLib
-
 async function TextFieldsCount(doc) {
    // Fetch the PDF with form fields
    const formUrl = doc;
@@ -413,14 +421,14 @@ async function TextFieldsCount(doc) {
    var count = 0;
    for (var field of form.getFields()) { // Get all acroform fields.
 
-      // Reference: Inspect the constructor.name of different field type
+      // Reference:
+      // For inspecting the constructor.name of different field type:
       // DisplayMessage(field.constructor.name);
 
       if (field.constructor.name == "PDFTextField") {
          count += 1;
       }
    }
-
    // Preview the number of fields
    DisplayMessage("🔎 " + count + " Text fields found...");
    return count;
@@ -429,9 +437,6 @@ async function TextFieldsCount(doc) {
 // ****************************************
 
 // Retrieve the png image for the top
-var pdfjsLib = window['pdfjs-dist/build/pdf'];
- pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://mozilla.github.io/pdf.js/build/pdf.worker.js';
-
 // Asynchronous download PDF as an ArrayBuffer
  var pdf = fileInput;
 
@@ -439,8 +444,8 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
    if (file = pdf.files[0]) {
      fileReader = new FileReader();
      fileReader.onload = function (ev) {
-       DisplayMessage(ev);
 
+       DisplayMessage(ev);
        var loadingTask = pdfjsLib.getDocument(fileReader.result);
 
        loadingTask.promise
@@ -456,7 +461,7 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
              DisplayMessage(page);
              var viewport = page.getViewport({ scale: scale });
              var canvas = document.createElement('canvas');
-             // var canvas = document.getElementById('the-canvas');
+
              var context = canvas.getContext('2d');
              canvas.height = viewport.height;
              canvas.width = viewport.width;
@@ -469,6 +474,7 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
              var renderTask = page.render(renderContext);
 
              renderTask.promise.then(function () {
+
                // DisplayMessage(canvas.toDataURL('image/png'));
                docCoverURL = canvas.toDataURL('image/png');
                canvas.style.visibility = 'hidden';
@@ -476,7 +482,7 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
               image = document.createElement('img');
               image.src = docCoverURL;
 
-              // StartHeavyLifting(docCoverURL);
+              // Retrieve the PDF cover as image, and load it in memory
               CreateNewFileFromUrl("Retrieving the cover image...", docCoverURL, "define", docCoverURLBlob);
 
              });
@@ -489,49 +495,3 @@ var pdfjsLib = window['pdfjs-dist/build/pdf'];
    }
  }
 
-// ****************************************
-
-// Refactor the XHR requests (april 2022):
-
-// ****************************************
-
-// 1) StartHeavyLifting(docCoverURL);
-// Replaced by:
-// CreateNewFileFromUrl("Retrieving the cover image...", docCoverURL, "define", docCoverURLBlob);
-
-// 2) DownloadFiles()
-// Replaced by:
-// CreateNewFileFromUrl("Download PDF file...", pdfURL, "function", ReadZipTemplate);
-
-function CreateNewFileFromUrl(msg, url, nextActionType, actionObj) {
-
-  // See what is happening
-  DisplayMessage(msg);
-
-  // XMLHttpRequest
-  var xhr = new XMLHttpRequest();
-    xhr.responseType = 'blob';
-    xhr.onload = function () {
-      var a = document.createElement('a'); // create html element anchor
-      a.href = window.URL.createObjectURL(xhr.response); // xhr.response is a blob
-
-      // Branching...
-      // A) executing a function ...or... B) Defining a global variable):
-      // A) Executing a function
-      if (nextActionType == 'function') {
-        actionObj(xhr.response);
-      }
-      // B) Defining a variable
-      else if (nextActionType == 'define') {
-        actionObj.blob = xhr.response;
-        console.log(actionObj);
-        console.log("Object: ", docCoverURLBlob.blob);
-      }
-
-    };
-
-    xhr.open('GET', url);
-    xhr.send();
-}
-
-// ****************************************
