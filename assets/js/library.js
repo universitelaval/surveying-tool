@@ -5,6 +5,8 @@
  * You may use, distribute and modify this code under the
  * terms of the MIT license, which unfortunately won't be
  * written for another century.
+ *
+ * Last update: 27 avril 2022
  */
 
 var pdfURL;
