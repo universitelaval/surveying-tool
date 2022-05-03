@@ -327,7 +327,7 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
         jsZip.folder(subFolderName).loadAsync(myzip, {createFolders: true}).then(function (zip) {
 
             // We define the path where to put the uploaded PDF file...
-            var destination = zip.folder("story_content/external_files");
+            var destination = zip.folder("assets/external_files");
             var destination_b = zip.folder("assets/js")
 
             // ****************************************
