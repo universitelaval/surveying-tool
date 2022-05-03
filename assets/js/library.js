@@ -301,7 +301,11 @@ function DownloadMyZipPackage() {
 async function SetSubFolderName(mypdf, myzip) {
 
     for (var i = 0; i < activityArr.length; i++) {
-        var sfn = activityArr[i] + ' - Storyline output';
+        // (V1)
+        // var sfn = activityArr[i] + ' - Storyline output';
+
+        var sfn = activityArr[i];
+
         // Process the content of this subfolder,
         // before going forward with the loop...
             // 1) Add the PDF
@@ -380,7 +384,10 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
 function AddToMainZip(subfolder, ctn) {
 
     return new Promise(function(resolve, reject) {
-        mainZip.file(subfolder + ' - Storyline output.zip', ctn);
+        // (V1)
+        // mainZip.file(subfolder + ' - Storyline output.zip', ctn);
+
+        mainZip.file(subfolder + 'zip', ctn);
 
         // Resolve the promise...
         resolve();
