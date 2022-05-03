@@ -6,7 +6,7 @@
  * terms of the MIT license, which unfortunately won't be
  * written for another century.
  *
- * Last update: 3 mai 2022 | 15:02
+ * Last update: 3 mai 2022 | 15:14
  */
 
 var pdfURL;
@@ -344,8 +344,8 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
             // Define the js taxonomy here...
             var taxonomyContent = `
              // See where this is executed...
-             console.log('*-----------------------*');
-             console.log('✅ External <taxonomy.js> have run...');
+             // console.log('*-----------------------*');
+             // console.log('✅ External <taxonomy.js> have run...');
 
              var myWords = {
                  'document_title' : 'Document',
