@@ -6,7 +6,7 @@
  * terms of the MIT license, which unfortunately won't be
  * written for another century.
  *
- * Last update: 3 mai 2022 | 14:56
+ * Last update: 3 mai 2022 | 15:02
  */
 
 var pdfURL;
@@ -387,7 +387,7 @@ function AddToMainZip(subfolder, ctn) {
         // (V1)
         // mainZip.file(subfolder + ' - Storyline output.zip', ctn);
 
-        mainZip.file(subfolder + 'zip', ctn);
+        mainZip.file(subfolder + '.zip', ctn);
 
         // Resolve the promise...
         resolve();
