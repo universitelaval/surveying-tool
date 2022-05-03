@@ -352,7 +352,8 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
                  'exercise_name' : '${exName}',
                  'file_name' : '${docName}',
                  'file_size' : '${docSize}',
-                 'max_characters' : ${charLimit}
+                 'max_characters' : ${charLimit},
+                 'numerization' : true
              }`;
              // Add the js taxonomy here...
             destination_b.file("taxonomy.js", taxonomyContent);
