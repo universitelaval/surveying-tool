@@ -6,7 +6,7 @@
  * terms of the MIT license, which unfortunately won't be
  * written for another century.
  *
- * Last update: 3 mai 2022
+ * Last update: 3 mai 2022 | 14:56
  */
 
 var pdfURL;
