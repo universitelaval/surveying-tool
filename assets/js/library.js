@@ -347,7 +347,7 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
              // console.log('*-----------------------*');
              // console.log('✅ External <config.js> have run...');
 
-             var myWords = {
+             var configurations = {
                  'document_title' : 'Document',
                  'exercise_name' : '${exName}',
                  'file_name' : '${docName}',
