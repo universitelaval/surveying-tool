@@ -341,11 +341,11 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
             // Add the PDF blob here...
             destination.file(pdfFileName, mypdf);
 
-            // Define the js taxonomy here...
+            // Define the js config here...
             var taxonomyContent = `
              // See where this is executed...
              // console.log('*-----------------------*');
-             // console.log('✅ External <taxonomy.js> have run...');
+             // console.log('✅ External <config.js> have run...');
 
              var myWords = {
                  'document_title' : 'Document',
@@ -356,7 +356,7 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
                  'numerization' : true
              }`;
              // Add the js taxonomy here...
-            destination_b.file("taxonomy.js", taxonomyContent);
+            destination_b.file("config.js", taxonomyContent);
 
             // Add the image blob here...
             docCoverDestination.file(docCoverName, docCoverURLBlob.blob);
