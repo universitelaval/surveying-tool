@@ -38,6 +38,10 @@
     <!-- FileSaver.js -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.0/FileSaver.min.js"></script>
 
+    <!-- Color picker dependencies (may 5th 2022) -->
+    <script src = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/js/bootstrap-colorpicker.js" > </script>
+    <link rel = "stylesheet" href = "https://cdnjs.cloudflare.com/ajax/libs/bootstrap-colorpicker/3.2.0/css/bootstrap-colorpicker.css"/>
+
 
 <style>
 
@@ -82,14 +86,19 @@
         <section class="portfolio-block photography">
             <section class="contact-clean" style="padding-right: 30px;padding-left: 30px;padding-top: 30px;max-width: none;padding-bottom: 26px;">
                 <form class="form-control" method="post" style="width: 100%;max-width: 1300px;margin-left: auto;margin-right: auto;padding-bottom: 58px;min-width: auto;">
+
+                    <!-- Container 1 -->
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
+                        <!-- Row 1 -->
                         <div class="row">
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">1) Suffixe</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="Ex.: reflexion" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/\s]/g, &quot;&quot;).normalize(&#39;NFD&#39;).replace(/[\u0300-\u036f]/g, &quot;&quot;);" required="" title="Un identifiant pour faciliter la gestion de vos fichiers et leur archivage." minlength="3" maxlength="30"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">2) ID du cours</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: XX000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" title="Ce code est requis. Vous pouvez utiliser le code unique du cours provenant de Brio." required="" maxlength="10" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/\s]/g, &quot;&quot;).normalize(&#39;NFD&#39;).replace(/[\u0300-\u036f]/g, &quot;&quot;).toUpperCase();" minlength="3"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">3) Nom des activités</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: Exercice de réflexion" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="L'appellation de vos activités. Un numérateur sera appliqué automatiquement." maxlength="200"></div>
                         </div>
                     </div>
+                    <!-- Container 2 -->
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
+                        <!-- Row 2 -->
                         <div class="row">
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">4) Nom du fichier PDF</label><input class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" placeholder="Ex.: doc" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="Le nom de votre fichier PDF, sans l'extension (ex:. Bilan de réflexion)." maxlength="50" oninput="this.value = this.value.replace(/[`~!@#$%^&amp;*()_|+\-=?;:&#39;&quot;,.&lt;&gt;\{\}\[\]\\\/]/g, &quot;&quot;);"></div>
                             <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">5) Limite de caractères</label><input class="form-control" type="number" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" max="1000" min="100" placeholder="1000" style="font-family: Overpass, sans-serif;padding-bottom: 4px;" required="" title="La limite de caractères permise pour chacune des activités."></div>
@@ -101,14 +110,29 @@
                                 </select></div>
                         </div>
                     </div>
+                    <!-- Container 3 -->
                     <div class="container" style="padding-bottom: 18px;max-width: none;">
+                        <!-- Row 3 -->
                         <div class="row">
-                            <div class="col-md-4" style="width: 100%;padding-bottom: 10;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Importez votre PDF interactif...</label><input class="form-control" type="file" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-top: 6px;font-family: Overpass, sans-serif;padding-bottom: 4px;" accept=".pdf" required="" title="Sélectionnez un PDF contenant au moins 1 champs de texte éditable."></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">7) Numérotation</label><select class="form-select" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="font-family: Overpass, sans-serif;padding-bottom: 4px;height: 36px;" required="" title="Si oui, un numéro sera appliqué après le nom de chaque exercice.">
+                                    <optgroup label="Numérotation">
+                                        <option value="1" selected="">Oui</option>
+                                        <option value="2">Non</option>
+                                    </optgroup>
+                                </select></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">8) Couleur du tème</label><input id="color-picker1" class="form-control" type="text" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-bottom: 4px;font-family: Overpass, sans-serif;" placeholder="#012038" value="#012038" oninput="" required=""  minlength="3" maxlength="30"></div>
+                            <div class="col-md-4" style="padding-bottom: 18px;"><label class="form-label" style="font-family: Overpass, sans-serif;font-weight: bold;">9) Importez votre PDF</label><input class="form-control" type="file" data-bs-toggle="tooltip" data-bss-tooltip="" data-bs-placement="bottom" style="padding-top: 6px;font-family: Overpass, sans-serif;padding-bottom: 4px;" accept=".pdf" required="" title="Sélectionnez un PDF contenant au moins 1 champs de texte éditable."></div>
                         </div>
-                    </div><button class="btn btn-secondary disabled" type="button" style="border-radius: 5px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;--bs-body-font-weight: normal;border-style: none;padding-top: 9px;margin-left: 12px;margin-top: 12px;" onclick="CreateFolderName()" data-toggle="modal" data-target="#exampleModalCenter" disabled="">Générer mes activités</button>
+                    </div>
+
+                    <!-- Generate button -->
+                    <button class="btn btn-secondary disabled" type="button" style="border-radius: 5px;border-top-left-radius: 1;border-top-right-radius: 0.1;border-bottom-right-radius: 3;border-bottom-left-radius: 3;font-size: 17px;font-family: Overpass, sans-serif;--bs-body-font-weight: normal;border-style: none;padding-top: 9px;margin-left: 12px;margin-top: 12px;" onclick="CreateFolderName()" data-toggle="modal" data-target="#exampleModalCenter" disabled="">Générer mes activités</button>
+
                 </form>
             </section>
         </section>
+
+        <!-- Bottom section with call outs -->
         <section id="explainer" class="portfolio-block skills" style="padding-top: 37px;padding-left: 0px;"><a href="https://github.com/universitelaval/surveying-tool" target="_blank"><img class="d-inline-block d-xxl-flex justify-content-xxl-center" src="assets/img/explainer.png" style="width: 100%;max-width: 1300px;margin-right: auto;margin-left: auto;padding-left: 30px;"></a>
             <div class="container">
                 <div class="heading"></div>
@@ -144,10 +168,22 @@
             </div>
         </section>
     </main>
+
+    <!-- Needed to uncomment this to work wit -->
+    <!--
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    -->
     <script src="assets/js/bs-init.js"></script>
     <script src="assets/js/theme.js"></script>
     <script src="assets/js/library.js"></script>
+
+    <!-- Add the color picking method -->
+    <script>
+        $(function () {
+          $('#color-picker1').colorpicker();
+        });
+    </script>
+
 </body>
 
 </html>

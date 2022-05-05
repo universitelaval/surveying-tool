@@ -6,7 +6,7 @@
  * terms of the MIT license, which unfortunately won't be
  * written for another century.
  *
- * Last update: 4 mai 2022 | 16:23
+ * Last update: 5 mai 2022 | 15:06
  */
 
 var pdfURL;
@@ -30,6 +30,8 @@ var docName;
 var docSize;
 var charLimit;
 var language = "french";
+var numerization;
+var colorPicker;
 
 var splitChar = "_";
 
@@ -63,7 +65,8 @@ var generateBtn = document.querySelector("body > main > section > section > form
 var dropDown = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(3) > select");
 
 // File input
-var fileInput = document.querySelector("body > main > section > section > form > div:nth-child(3) > div > div > input");
+// var fileInput = document.querySelector("body > main > section > section > form > div:nth-child(3) > div > div > input");
+var fileInput = document.querySelector("body > main > section.portfolio-block.photography > section > form > div:nth-child(3) > div > div:nth-child(3) > input");
 
 // ****************************************
 
@@ -118,7 +121,23 @@ async function CreateFolderName() {
    exName = document.querySelector("body > main > section > section > form > div:nth-child(1) > div > div:nth-child(3) > input").value;
    docName = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(1) > input").value;
    charLimit = document.querySelector("body > main > section > section > form > div:nth-child(2) > div > div:nth-child(2) > input").value;
+
+   // Hidden values
+   // Language
    language = GetSelectedLanguage();
+
+    // Numerate dropdown
+    var numDropDown = document.querySelector("body > main > section.portfolio-block.photography > section > form > div:nth-child(3) > div > div:nth-child(1) > select").value;
+
+    // Check the choice value
+    if (numDropDown == 1) {
+        numerization = true;
+    } else {
+        numerization = false;
+    }
+
+    // Color picker
+    colorPicker = document.querySelector("#color-picker1").value;
 
     // Get a default answer if nothing is entered
     if (suffix.length == 0) {
@@ -353,7 +372,8 @@ function AddFilesToZipTemplate(mypdf, myzip, subFolderName) {
                  'file_name' : '${docName}',
                  'file_size' : '${docSize}',
                  'max_characters' : ${charLimit},
-                 'numerization' : true
+                 'numerization' : ${numerization},
+                 'color_theme' : '${colorPicker}'
              }`;
              // Add the js taxonomy here...
             destination_b.file("config.js", taxonomyContent);
